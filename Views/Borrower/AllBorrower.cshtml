@@ -1,0 +1,164 @@
+﻿@using LibraryManage.Entity
+@using Newtonsoft.Json
+@model List<LibraryManage.Entity.Borrower>
+
+@{
+    Layout = "_CustomerLayout";
+    string error = ViewBag.Error ?? "";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Người dùng</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="row">
+            @if (Model == null || !Model.Any())
+            {
+                <p>Không có tài khoản</p>
+            }
+            else
+            {
+                <div class="container mt-5">
+                    <h2 class="mb-4">Quản lý Người dùng</h2>
+
+                    <!-- Nút Thêm Người Dùng -->
+                    <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addModal" style="position: absolute; right: 20px;">
+                        Thêm Người Dùng
+                    </button>
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Tên</th>
+                                <th>Số thẻ</th>
+                                <th>Địa chỉ</th>
+                                <th>Email</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var borrower in Model)
+                            {
+                                <tr>
+                                    <td>@borrower.BorrowerId</td>
+                                    <td>@borrower.Name</td>
+                                    <td>@borrower.LibraryCardNumber</td>
+                                    <td>@borrower.Address</td>
+                                    <td>@borrower.Email</td>
+                                    <td>
+                                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editUser(@borrower.BorrowerId, '@borrower.Name', '@borrower.LibraryCardNumber', '@borrower.Address', '@borrower.Email')">Sửa</button>
+                                        <a href="@Url.Action("DeleteBorrower", "Borrower", new { id = @borrower.BorrowerId })" class="btn btn-sm btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa người dùng @borrower.Name có số thẻ thư viện là @borrower.LibraryCardNumber không?');">Xóa</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+
+            <!-- Modal sửa người dùng -->
+            <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editModalLabel">Sửa Người dùng</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="editForm" asp-action="UpdateBorrower" asp-controller="Borrower">
+                                <div class="mb-3">
+                                    <label for="Id" class="form-label">Id</label>
+                                    <input type="text" class="form-control" id="Id" name="Id" readonly required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editName" class="form-label">Tên</label>
+                                    <input type="text" class="form-control" id="editName" name="Name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editCard" class="form-label">Số thẻ</label>
+                                    <input type="text" class="form-control" id="editCard" name="editCard" readonly required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editAddress" class="form-label">Địa chỉ</label>
+                                    <input type="text" class="form-control" id="editAddress" name="Address" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editEmail" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="editEmail" name="Email" readonly required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Lưu</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal thêm người dùng -->
+            <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addModalLabel">Thêm Người Dùng Mới</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="addForm" asp-action="AddBorrower" asp-controller="Borrower">
+                                <div class="mb-3">
+                                    <label for="addName" class="form-label">Tên</label>
+                                    <input type="text" class="form-control" id="Name" name="Name" value="@ViewData["Name"]" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="addAddress" class="form-label">Địa chỉ</label>
+                                    <input type="text" class="form-control" id="Address" name="Address" value="@ViewData["Address"]" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="addEmail" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="Email" name="Email" value="@ViewData["Email"]" required>
+                                </div>
+
+                                <!-- Hiển thị thông báo lỗi nếu có -->
+                                @if (!string.IsNullOrEmpty(error))
+                                {
+                                    <p class="text-danger">@error</p>
+                                }
+
+                                <button type="submit" class="btn btn-primary">Thêm</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Thêm Bootstrap và các tập tin JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var errorMessage = '@ViewBag.Error';
+            if (errorMessage) {
+                $('#addModal').modal('show');
+            }
+        });
+        // Hàm chỉnh sửa người dùng
+        function editUser(userId, name, card, address, email) {
+            document.getElementById("Id").value = userId;
+            document.getElementById("editName").value = name;
+            document.getElementById("editCard").value = card;
+            document.getElementById("editAddress").value = address;
+            document.getElementById("editEmail").value = email;
+        }
+    </script>
+
+</body>
+</html>

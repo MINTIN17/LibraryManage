@@ -1,0 +1,96 @@
+﻿@using LibraryManage.Entity
+@model List<LibraryManage.DTO.Responses.BorrowHistoryTitle>
+
+@{
+    Layout = "_CustomerLayout";
+    string card = ViewBag.Card ?? "";
+    string status = ViewBag.Status ?? "all";
+}
+
+<div class="row mb-4">
+    <form asp-action="AllHistory" method="get" class="d-flex align-items-center justify-content-between w-100" asp-controller="BorrowHistory" id="searchForm">
+
+        <div class="col-md-3">
+            <div class="input-group">
+                <input type="text" name="card" id="card" class="form-control" placeholder="Tìm kiếm số thẻ thư viện" value="@ViewBag.Card">
+                <button class="btn btn-outline-secondary" type="submit">Tìm kiếm</button>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <label for="sortBy" class="form-label">Tình trạng</label>
+            <select name="status" id="status" class="form-select" onchange="submitForm()">
+                <option value="all">Tất cả</option>
+                <option value="returned">Đã trả</option>
+                <option value="notReturned">Chưa trả</option>
+            </select>
+        </div>
+
+    </form>
+</div>
+
+<div class="container mt-5">
+    <h2 class="mb-4">Lịch Sử Mượn Sách</h2>
+    @if (Model == null || !Model.Any())
+    {
+        <p>Không có lịch sử mượn nào.</p>
+    }
+    else
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Tên vật phẩm</th>
+                    <th>Loại</th>
+                    <th>Ngày Mượn</th>
+                    <th>Ngày Trả</th>
+                    <th>Số Thẻ Người Mượn</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+                        <td>@(i + 1)</td>
+                        <td>@Model[i].Title</td>
+                        <td>@Model[i].Category</td>
+                        <td>@Model[i].BorrowDate.ToString("dd/MM/yyyy")</td>
+                        <td>
+                            @if (Model[i].ReturnDate.HasValue)
+                            {
+                                @Model[i].ReturnDate.Value.ToString("dd/MM/yyyy")
+                            }
+                            else
+                            {
+                                <span class="text-danger">Chưa trả</span>
+                            }
+                        </td>
+                        <td>@Model[i].BorrowerLibraryCardNumber</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+<style>
+    .table th, .table td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .text-danger {
+        color: red;
+    }
+</style>
+
+<script>
+    document.getElementById('card').value = '@card';
+    document.getElementById('status').value = '@status';
+
+    function submitForm() {
+        document.getElementById('searchForm').submit();
+    }
+
+</script>

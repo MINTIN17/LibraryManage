@@ -1,0 +1,309 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "F:\\Intern\\C#\\Project\\LibraryManage\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|f:\\intern\\c#\\project\\librarymanage\\service\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|solutionrelative:service\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|f:\\intern\\c#\\project\\librarymanage\\service\\impl\\borrowhistoryserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|solutionrelative:service\\impl\\borrowhistoryserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|f:\\intern\\c#\\project\\librarymanage\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|solutionrelative:models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|f:\\intern\\c#\\project\\librarymanage\\dto\\responses\\borrowhistorytitle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|solutionrelative:dto\\responses\\borrowhistorytitle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|f:\\intern\\c#\\project\\librarymanage\\repository\\borrowerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|solutionrelative:repository\\borrowerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|f:\\intern\\c#\\project\\librarymanage\\service\\impl\\borrowerserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|solutionrelative:service\\impl\\borrowerserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|f:\\intern\\c#\\project\\librarymanage\\controllers\\borrowercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|solutionrelative:controllers\\borrowercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|f:\\intern\\c#\\project\\librarymanage\\service\\borrowerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|solutionrelative:service\\borrowerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|f:\\intern\\c#\\project\\librarymanage\\repository\\libraryitemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|solutionrelative:repository\\libraryitemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|f:\\intern\\c#\\project\\librarymanage\\service\\impl\\libraryitemserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|solutionrelative:service\\impl\\libraryitemserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|f:\\intern\\c#\\project\\librarymanage\\service\\libraryitemservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|solutionrelative:service\\libraryitemservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|f:\\intern\\c#\\project\\librarymanage\\views\\libraryitem\\_filteritems.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|solutionrelative:views\\libraryitem\\_filteritems.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|f:\\intern\\c#\\project\\librarymanage\\views\\libraryitem\\_additemmodal.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|solutionrelative:views\\libraryitem\\_additemmodal.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|f:\\intern\\c#\\project\\librarymanage\\views\\libraryitem\\libraryitem.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|solutionrelative:views\\libraryitem\\libraryitem.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|f:\\intern\\c#\\project\\librarymanage\\controllers\\libraryitemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|solutionrelative:controllers\\libraryitemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|f:\\intern\\c#\\project\\librarymanage\\repository\\borrowhistoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|solutionrelative:repository\\borrowhistoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|f:\\intern\\c#\\project\\librarymanage\\controllers\\borrowhistorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|solutionrelative:controllers\\borrowhistorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|f:\\intern\\c#\\project\\librarymanage\\views\\libraryitem\\_edititemmodal.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98636D93-76AE-449D-8654-89D38244EA33}|LibraryManage.csproj|solutionrelative:views\\libraryitem\\_edititemmodal.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "F:\\Intern\\C#\\Project\\LibraryManage\\Service\\AuthService.cs",
+              "RelativeDocumentMoniker": "Service\\AuthService.cs",
+              "ToolTip": "F:\\Intern\\C#\\Project\\LibraryManage\\Service\\AuthService.cs",
+              "RelativeToolTip": "Service\\AuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-20T09:37:07.407Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "F:\\Intern\\C#\\Project\\LibraryManage\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\ErrorViewModel.cs",
+              "ToolTip": "F:\\Intern\\C#\\Project\\LibraryManage\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-20T09:36:08.07Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BorrowerServiceImpl.cs",
+              "DocumentMoniker": "F:\\Intern\\C#\\Project\\LibraryManage\\Service\\Impl\\BorrowerServiceImpl.cs",
+              "RelativeDocumentMoniker": "Service\\Impl\\BorrowerServiceImpl.cs",
+              "ToolTip": "F:\\Intern\\C#\\Project\\LibraryManage\\Service\\Impl\\BorrowerServiceImpl.cs",
+              "RelativeToolTip": "Service\\Impl\\BorrowerServiceImpl.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-20T09:26:01.852Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "BorrowerController.cs",
+              "DocumentMoniker": "F:\\Intern\\C#\\Project\\LibraryManage\\Controllers\\BorrowerController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BorrowerController.cs",
+              "ToolTip": "F:\\Intern\\C#\\Project\\LibraryManage\\Controllers\\BorrowerController.cs",
+              "RelativeToolTip": "Controllers\\BorrowerController.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-20T09:25:33.279Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BorrowHistoryServiceImpl.cs",
+              "DocumentMoniker": "F:\\Intern\\C#\\Project\\LibraryManage\\Service\\Impl\\BorrowHistoryServiceImpl.cs",
+              "RelativeDocumentMoniker": "Service\\Impl\\BorrowHistoryServiceImpl.cs",
+              "ToolTip": "F:\\Intern\\C#\\Project\\LibraryManage\\Service\\Impl\\BorrowHistoryServiceImpl.cs",
+              "RelativeToolTip": "Service\\Impl\\BorrowHistoryServiceImpl.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAawA8AAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T09:10:27.499Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "BorrowerService.cs",
+              "DocumentMoniker": "F:\\Intern\\C#\\Project\\LibraryManage\\Service\\BorrowerService.cs",
+              "RelativeDocumentMoniker": "Service\\BorrowerService.cs",
+              "ToolTip": "F:\\Intern\\C#\\Project\\LibraryManage\\Service\\BorrowerService.cs",
+              "RelativeToolTip": "Service\\BorrowerService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-20T09:25:57.339Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BorrowHistoryTitle.cs",
+              "DocumentMoniker": "F:\\Intern\\C#\\Project\\LibraryManage\\DTO\\Responses\\BorrowHistoryTitle.cs",
+              "RelativeDocumentMoniker": "DTO\\Responses\\BorrowHistoryTitle.cs",
+              "ToolTip": "F:\\Intern\\C#\\Project\\LibraryManage\\DTO\\Responses\\BorrowHistoryTitle.cs",
+              "RelativeToolTip": "DTO\\Responses\\BorrowHistoryTitle.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAoAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T09:11:04.985Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "LibraryItemServiceImpl.cs",
+              "DocumentMoniker": "F:\\Intern\\C#\\Project\\LibraryManage\\Service\\Impl\\LibraryItemServiceImpl.cs",
+              "RelativeDocumentMoniker": "Service\\Impl\\LibraryItemServiceImpl.cs",
+              "ToolTip": "F:\\Intern\\C#\\Project\\LibraryManage\\Service\\Impl\\LibraryItemServiceImpl.cs",
+              "RelativeToolTip": "Service\\Impl\\LibraryItemServiceImpl.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAA1wAYAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T08:07:48.403Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BorrowerRepository.cs",
+              "DocumentMoniker": "F:\\Intern\\C#\\Project\\LibraryManage\\Repository\\BorrowerRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\BorrowerRepository.cs",
+              "ToolTip": "F:\\Intern\\C#\\Project\\LibraryManage\\Repository\\BorrowerRepository.cs",
+              "RelativeToolTip": "Repository\\BorrowerRepository.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T08:05:19.655Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "LibraryItemService.cs",
+              "DocumentMoniker": "F:\\Intern\\C#\\Project\\LibraryManage\\Service\\LibraryItemService.cs",
+              "RelativeDocumentMoniker": "Service\\LibraryItemService.cs",
+              "ToolTip": "F:\\Intern\\C#\\Project\\LibraryManage\\Service\\LibraryItemService.cs",
+              "RelativeToolTip": "Service\\LibraryItemService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAQAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-20T09:19:11.911Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "LibraryItemRepository.cs",
+              "DocumentMoniker": "F:\\Intern\\C#\\Project\\LibraryManage\\Repository\\LibraryItemRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\LibraryItemRepository.cs",
+              "ToolTip": "F:\\Intern\\C#\\Project\\LibraryManage\\Repository\\LibraryItemRepository.cs",
+              "RelativeToolTip": "Repository\\LibraryItemRepository.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAswDAAAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T08:06:23.639Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "BorrowHistoryRepository.cs",
+              "DocumentMoniker": "F:\\Intern\\C#\\Project\\LibraryManage\\Repository\\BorrowHistoryRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\BorrowHistoryRepository.cs",
+              "ToolTip": "F:\\Intern\\C#\\Project\\LibraryManage\\Repository\\BorrowHistoryRepository.cs",
+              "RelativeToolTip": "Repository\\BorrowHistoryRepository.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAuwBgAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T08:05:33.423Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "LibraryItemController.cs",
+              "DocumentMoniker": "F:\\Intern\\C#\\Project\\LibraryManage\\Controllers\\LibraryItemController.cs",
+              "RelativeDocumentMoniker": "Controllers\\LibraryItemController.cs",
+              "ToolTip": "F:\\Intern\\C#\\Project\\LibraryManage\\Controllers\\LibraryItemController.cs",
+              "RelativeToolTip": "Controllers\\LibraryItemController.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAApwFMAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T16:41:47.621Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "_AddItemModal.cshtml",
+              "DocumentMoniker": "F:\\Intern\\C#\\Project\\LibraryManage\\Views\\LibraryItem\\_AddItemModal.cshtml",
+              "RelativeDocumentMoniker": "Views\\LibraryItem\\_AddItemModal.cshtml",
+              "ToolTip": "F:\\Intern\\C#\\Project\\LibraryManage\\Views\\LibraryItem\\_AddItemModal.cshtml",
+              "RelativeToolTip": "Views\\LibraryItem\\_AddItemModal.cshtml",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAEUAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-18T09:14:38.09Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "_FilterItems.cshtml",
+              "DocumentMoniker": "F:\\Intern\\C#\\Project\\LibraryManage\\Views\\LibraryItem\\_FilterItems.cshtml",
+              "RelativeDocumentMoniker": "Views\\LibraryItem\\_FilterItems.cshtml",
+              "ToolTip": "F:\\Intern\\C#\\Project\\LibraryManage\\Views\\LibraryItem\\_FilterItems.cshtml",
+              "RelativeToolTip": "Views\\LibraryItem\\_FilterItems.cshtml",
+              "ViewState": "AgIAAL4AAAAAAAAAAAAQwMcAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-18T03:01:48.328Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "LibraryItem.cshtml",
+              "DocumentMoniker": "F:\\Intern\\C#\\Project\\LibraryManage\\Views\\LibraryItem\\LibraryItem.cshtml",
+              "RelativeDocumentMoniker": "Views\\LibraryItem\\LibraryItem.cshtml",
+              "ToolTip": "F:\\Intern\\C#\\Project\\LibraryManage\\Views\\LibraryItem\\LibraryItem.cshtml",
+              "RelativeToolTip": "Views\\LibraryItem\\LibraryItem.cshtml",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAD8AAABkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-18T08:16:43.831Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "BorrowHistoryController.cs",
+              "DocumentMoniker": "F:\\Intern\\C#\\Project\\LibraryManage\\Controllers\\BorrowHistoryController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BorrowHistoryController.cs",
+              "ToolTip": "F:\\Intern\\C#\\Project\\LibraryManage\\Controllers\\BorrowHistoryController.cs",
+              "RelativeToolTip": "Controllers\\BorrowHistoryController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAmwBEAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T09:09:54.573Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "_EditItemModal.cshtml",
+              "DocumentMoniker": "F:\\Intern\\C#\\Project\\LibraryManage\\Views\\LibraryItem\\_EditItemModal.cshtml",
+              "RelativeDocumentMoniker": "Views\\LibraryItem\\_EditItemModal.cshtml",
+              "ToolTip": "F:\\Intern\\C#\\Project\\LibraryManage\\Views\\LibraryItem\\_EditItemModal.cshtml",
+              "RelativeToolTip": "Views\\LibraryItem\\_EditItemModal.cshtml",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAAwHoAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-18T08:17:05.284Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

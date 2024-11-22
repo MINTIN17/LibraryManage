@@ -1,0 +1,81 @@
+﻿@using LibraryManage.Entity
+@model List<LibraryManage.Entity.LibraryItem>
+
+
+@{
+    ViewData["Title"] = "Library Items";
+    Layout = "_CustomerLayout";
+    string searchQuery = ViewBag.SearchQuery ?? "";
+    string sortOrder = ViewBag.SortOrder ?? "asc";
+    string sortBy = ViewBag.SortBy ?? "all";
+}
+
+<div class="row mb-4">
+    <!-- Form tìm kiếm, danh mục và sắp xếp -->
+    <form asp-action="LibraryItem" method="get" class="d-flex align-items-center justify-content-between w-100" asp-controller="LibraryItem" id="searchForm">
+
+        <!-- Thanh tìm kiếm -->
+        <div class="col-md-3">
+            <div class="input-group">
+                <input type="text" name="searchQuery" class="form-control" placeholder="Tìm kiếm..." value="@ViewBag.SearchQuery">
+                <button class="btn btn-outline-secondary" type="submit">Tìm kiếm</button>
+            </div>
+        </div>
+
+        <!-- Danh mục -->
+        <div class="col-md-2">
+            <label for="sortBy" class="form-label">Danh mục</label>
+            <select name="sortBy" id="sortBy" class="form-select" onchange="submitForm()">
+                <option value="all">Tất cả</option>
+                <option value="Book">Sách</option>
+                <option value="DVD">DVD</option>
+                <option value="Magazine">Tạp chí</option>
+            </select>
+        </div>
+
+        <!-- Sắp xếp -->
+        <div class="col-md-2">
+            <label for="sortOrder" class="form-label">Sắp xếp theo:</label>
+            <select name="sortOrder" id="sortOrder" class="form-select" onchange="submitForm()">
+                <option value="asc">A-Z</option>
+                <option value="desc">Z-A</option>
+            </select>
+        </div>
+
+        <!-- Nút Thêm Sản Phẩm (Kích hoạt Modal) -->
+        <div class="col-md-2 text-end">
+            <button type="button" class="btn btn-primary mt-4" data-bs-toggle="modal" data-bs-target="#addItemModal">Thêm Sản Phẩm</button>
+        </div>
+
+    </form>
+</div>
+
+<!-- list-item -->
+<div id="items-container">
+    @{
+        Html.RenderPartial("_FilterItems", Model);
+    }
+</div>
+
+<!-- Render Partial View cho Modal -->
+@Html.Partial("_AddItemModal")
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    document.getElementById('sortBy').value = '@sortBy';
+    document.getElementById('sortOrder').value = '@sortOrder';
+    
+    function submitForm() {
+        document.getElementById('searchForm').submit();
+    }
+
+    var myModal = new bootstrap.Modal(document.getElementById('addItemModal'));
+    $('#addItemForm').on('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(this);
+        console.log("Sản phẩm mới:", Object.fromEntries(formData));
+        myModal.hide();
+    });
+</script>

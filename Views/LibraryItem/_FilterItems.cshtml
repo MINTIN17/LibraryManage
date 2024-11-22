@@ -1,0 +1,391 @@
+﻿@using LibraryManage.Entity
+@using Newtonsoft.Json
+@model List<LibraryManage.Entity.LibraryItem>
+
+@{
+    int pageNumber = ViewBag.PageNumber ?? 1;
+    int totalPages = ViewBag.TotalPages ?? 1;
+    string error = ViewBag.Error ?? "";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        @if (Model == null || !Model.Any())
+        {
+            <p>Không có sản phẩm</p>
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                if (item.Category == "Book" && item is Book book)
+                {
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 shadow-sm position-relative">
+                            <span class="badge badge-info position-absolute category-badge">Sách</span>
+                            <img src="@book.Image" class="card-img-top img-fluid" alt="@book.Title" style="max-height: 200px; width: auto;">
+                            <div class="card-body">
+                                <h5 class="card-title">@book.Title</h5>
+                                <p class="card-text">Ngày phát hành: @book.PublicationDate.ToString("dd/MM/yyyy")</p>
+                                <p class="card-text">Số trang: @book.NumberOfPage</p>
+                                <p class="card-text">
+                                    @(book.Description?.Length > 100 ? book.Description.Substring(0, 100) + "..." : book.Description)
+                                </p>
+                                <p class="card-text">Số lượng: @book.Quantity</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Tác giả: @book.Author</small>
+                                <div>
+                                    <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editItemModal" data-item='@Html.Raw(Json.Serialize(book))'>Chỉnh sửa</button>
+                                    <a href="@Url.Action("DeleteItem", "LibraryItem", new { id = @book.LibraryItemId })" class="btn btn-sm btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa @book.Category: @book.Title không?');">Xóa</a>
+                                    <button class="btn btn-sm btn-success @((book.Quantity == 0) ? "disabled" : "")"
+                                            style="cursor: @((book.Quantity == 0) ? "not-allowed" : "pointer");"
+                                            data-bs-toggle="modal" data-bs-target="#borrowModal"
+                                            data-item-id="@book.LibraryItemId"
+                                            @((book.Quantity == 0) ? "disabled" : "")>
+                                        Mượn
+                                    </button>
+                                    <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#returnModal"
+                                            data-item-id-return="@book.LibraryItemId">
+                                        Trả
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else if (item.Category == "DVD" && item is DVD dvd)
+                {
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 shadow-sm position-relative">
+                            <span class="badge badge-warning position-absolute category-badge">DVD</span>
+                            <img src="@dvd.Image" class="card-img-top img-fluid" alt="@dvd.Title" style="max-height: 200px; width: auto;">
+                            <div class="card-body">
+                                <h5 class="card-title">@dvd.Title</h5>
+                                <p class="card-text">Ngày phát hành: @dvd.PublicationDate.ToString("dd/MM/yyyy")</p>
+                                <p class="card-text">Thời lượng: @dvd.RunTime phút</p>
+                                <p class="card-text">
+                                    @(dvd.Description?.Length > 100 ? dvd.Description.Substring(0, 100) + "..." : dvd.Description)
+                                </p>
+                                <p class="card-text">Số lượng: @dvd.Quantity</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Tác giả: @dvd.Author</small>
+                                <div>
+                                    <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editItemModal" data-item='@Html.Raw(Json.Serialize(dvd))'>Chỉnh sửa</button>
+                                    <a href="@Url.Action("DeleteItem", "LibraryItem", new { id = @dvd.LibraryItemId })" class="btn btn-sm btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa @dvd.Category: @dvd.Title không?');">Xóa</a>
+                                    <button class="btn btn-sm btn-success @((dvd.Quantity == 0) ? "disabled" : "")"
+                                            style="cursor: @((dvd.Quantity == 0) ? "not-allowed" : "pointer");"
+                                            data-bs-toggle="modal" data-bs-target="#borrowModal"
+                                            data-item-id="@dvd.LibraryItemId"
+                                            @((dvd.Quantity == 0) ? "disabled" : "")>
+                                        Mượn
+                                    </button>
+                                    <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#returnModal"
+                                            data-item-id-return="@dvd.LibraryItemId">
+                                        Trả
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else if (item.Category == "Magazine" && item is Magazine magazine)
+                {
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 shadow-sm position-relative">
+                            <span class="badge badge-success position-absolute category-badge">Tạp chí</span>
+                            <img src="@magazine.Image" class="card-img-top img-fluid" alt="@magazine.Title" style="max-height: 200px; width: auto;">
+                            <div class="card-body">
+                                <h5 class="card-title">@magazine.Title</h5>
+                                <p class="card-text">Ngày phát hành: @magazine.PublicationDate.ToString("dd/MM/yyyy")</p>
+                                <p class="card-text">
+                                    @(magazine.Description?.Length > 100 ? magazine.Description.Substring(0, 100) + "..." : magazine.Description)
+                                </p>
+                                <p class="card-text">Số lượng: @magazine.Quantity</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Tác giả: @magazine.Author</small>
+                                <div>
+                                    <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editItemModal" data-item='@Html.Raw(Json.Serialize(magazine))'>Chỉnh sửa</button>
+                                    <a href="@Url.Action("DeleteItem", "LibraryItem", new { id = @magazine.LibraryItemId })" class="btn btn-sm btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa @magazine.Category: @magazine.Title không?');">Xóa</a>
+                                    <button class="btn btn-sm btn-success @((magazine.Quantity == 0) ? "disabled" : "")"
+                                            style="cursor: @((magazine.Quantity == 0) ? "not-allowed" : "pointer");"
+                                            data-bs-toggle="modal" data-bs-target="#borrowModal"
+                                            data-item-id="@magazine.LibraryItemId"
+                                            @((magazine.Quantity == 0) ? "disabled" : "")>
+                                        Mượn
+                                    </button>
+                                    <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#returnModal"
+                                            data-item-id-return="@magazine.LibraryItemId">
+                                        Trả
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
+    </div>
+</div>
+
+<!-- Phân trang -->
+<nav aria-label="Page navigation" class="mt-4">
+    <ul class="pagination justify-content-center">
+        <!-- Previous Page -->
+        <li class="page-item @(pageNumber == 1 || !Model.Any() ? "disabled" : "")">
+            <a class="page-link" href="?pageNumber=@(pageNumber - 1)&searchQuery=@ViewBag.SearchQuery&sortBy=@ViewBag.SortBy&sortOrder=@ViewBag.SortOrder" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span> Trước
+            </a>
+        </li>
+
+        <!-- Page Number Links -->
+        @for (int i = 1; i <= totalPages; i++)
+        {
+            <li class="page-item @(i == pageNumber ? "active" : "")">
+                <a class="page-link" href="?pageNumber=@i&searchQuery=@ViewBag.SearchQuery&sortBy=@ViewBag.SortBy&sortOrder=@ViewBag.SortOrder">@i</a>
+            </li>
+        }
+
+        <!-- Next Page -->
+        <li class="page-item @(pageNumber == totalPages || !Model.Any() ? "disabled" : "")">
+            <a class="page-link" href="?pageNumber=@(pageNumber + 1)&searchQuery=@ViewBag.SearchQuery&sortBy=@ViewBag.SortBy&sortOrder=@ViewBag.SortOrder" aria-label="Next">
+                Sau <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+ <!-- Render Partial View cho Modal -->
+@Html.Partial("_EditItemModal")
+
+
+<!-- Modal borrow-->
+<div class="modal fade" id="borrowModal" tabindex="-1" aria-labelledby="borrowModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="borrowModalLabel">Nhập số thẻ người mượn</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="borrowForm" method="post" asp-action="BorrowItem" asp-controller="LibraryItem">
+                    <input type="hidden" name="itemId" id="itemId" />
+                    <div class="mb-3">
+                        <label for="cardNumber" class="form-label">Số thẻ người mượn</label>
+                        <input type="text" class="form-control" id="cardNumber" name="borrowerCardNumber" placeholder="Nhập số thẻ" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                        <button type="submit" class="btn btn-primary">Mượn</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Return-->
+<div class="modal fade" id="returnModal" tabindex="-1" aria-labelledby="returnModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="returnModalLabel">Nhập số thẻ người trả</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="closeButton"></button>
+            </div>
+            <div class="modal-body">
+                <form id="returnForm" method="post" asp-action="ReturnItem" asp-controller="LibraryItem">
+                    <input type="hidden" name="itemReturnId" id="itemReturnId" />
+                    <div class="mb-3">
+                        <label for="cardNumber" class="form-label">Số thẻ người trả</label>
+                        <input type="text" class="form-control" id="cardNumber" name="borrowerCardNumber" placeholder="Nhập số thẻ" required>
+                    </div>
+                    @if (!string.IsNullOrEmpty(error))
+                    {
+                        <p class="text-danger">@error</p>
+                    }
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancelButton">Hủy</button>
+                        <button type="submit" class="btn btn-primary">Trả</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        transition: transform 0.2s;
+    }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+    .card-img-top {
+        display: block;
+        padding: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        cursor: pointer;
+    }
+
+    .category-badge {
+        top: 10px;
+        left: 10px;
+        z-index: 10;
+        padding: 5px 10px;
+        background-color: rgba(0, 123, 255, 0.8);
+        color: white;
+        font-weight: bold;
+        font-size: 0.9em;
+        border-radius: 5px;
+    }
+
+    /* Phân trang */
+    .pagination .page-link {
+        color: #007bff;
+        padding: 0.5rem 0.75rem;
+        border-radius: 5px;
+        margin: 0 2px;
+        transition: background-color 0.2s, color 0.2s;
+    }
+
+        .pagination .page-link:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+    .pagination .page-item.active .page-link {
+        background-color: #007bff;
+        color: white;
+        border-color: #007bff;
+    }
+
+    .pagination .page-item.disabled .page-link {
+        color: #6c757d;
+        pointer-events: none;
+        background-color: #e9ecef;
+    }
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+<script>
+    // $(document).ready(function () {
+    //     $('#editItemModal').on('show.bs.modal', function (event) {
+    //         var button = $(event.relatedTarget);
+    //         var itemJson = button.data('item');
+    //         var item = JSON.parse(itemJson);
+
+    //         if (item.Category === "Book") {
+    //             $('#NumberOfPages').val(item.NumberOfPage);
+    //             $('#Genre').val(item.Genre);
+    //             $('#Runtime').val('');
+    //         } else if (item.Category === "DVD") {
+    //             $('#Runtime').val(item.RunTime);
+    //             $('#Genre').val(item.Genre);
+    //             $('#NumberOfPages').val('');
+    //         } else {
+    //             $('#Runtime').val('');
+    //             $('#Genre').val('');
+    //             $('#NumberOfPages').val('');
+    //         }
+    //     });
+    // });
+
+    $(document).ready(function () {
+        var errorMessage = '@ViewBag.Error';
+        if (errorMessage) {
+            $('#returnModal').modal('show');
+        }
+        $('#borrowModal').off('show.bs.modal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var itemId = button.data('item-id');
+
+            var modal = $(this);
+            modal.find('#itemId').val(itemId);
+        });
+
+        $('#returnModal').off('show.bs.modal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); 
+            var itemId = button.data('item-id-return');
+
+            var modal = $(this);
+            console.log(itemId);
+            modal.find('#itemReturnId').val(itemId); 
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // Lắng nghe sự kiện click trên nút Hủy
+        const cancelButton = document.getElementById("cancelButton");
+        const closeButton = document.getElementById("closeButton");
+
+        cancelButton.addEventListener("click", function () {
+            const errorElement = document.querySelector(".text-danger");
+            if (errorElement) {
+                errorElement.textContent = ""; 
+            }
+        });
+        closeButton.addEventListener("click", function () {
+            const errorElement = document.querySelector(".text-danger");
+            if (errorElement) {
+                errorElement.textContent = "";
+            }
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const editButtons = document.querySelectorAll("[data-bs-toggle='modal'][data-bs-target='#editItemModal']");
+
+        // Lắng nghe sự kiện click cho tất cả các nút "Chỉnh sửa"
+        editButtons.forEach(button => {
+            button.addEventListener("click", function () {
+                const itemData = JSON.parse(this.getAttribute("data-item"));
+                console.log(itemData);
+                // try {
+                //     const itemData = JSON.parse(button.getAttribute("data-item"));
+                //     console.log(itemData);
+                //     Tiếp tục xử lý dữ liệu...
+                // } catch (error) {
+                //     console.error("Dữ liệu JSON không hợp lệ:", error);
+                // }
+                var runtimeField = document.getElementById('Runtime_edit');
+                var pageCountField = document.getElementById('NumberOfPages_edit');
+                var genreField = document.getElementById('Genre_edit');
+
+                runtimeField.disabled = false;
+                pageCountField.disabled = false;
+                genreField.disabled = false;
+                if (itemData.category === 'Book') {
+                    runtimeField.disabled = true;
+                } else if (itemData.category === 'DVD') {
+                    pageCountField.disabled = true;
+                } else if (itemData.category === 'Magazine') {
+                    pageCountField.disabled = true;
+                    genreField.disabled = true;
+                    runtimeField.disabled = true;
+                }
+                document.getElementById("ItemId_edit").value = itemData.libraryItemId;
+                document.getElementById("ItemName_edit").value = itemData.title;
+                document.getElementById("Author_edit").value = itemData.author;
+                document.getElementById("PublicationDate_edit").value = itemData.publicationDate;
+                document.getElementById("Quantity_edit").value = itemData.quantity;
+                document.getElementById("Category_edit").value = itemData.category;
+                document.getElementById("Description_edit").value = itemData.description;
+                document.getElementById("Image_edit").value = itemData.image;
+                document.getElementById("NumberOfPages_edit").value = itemData.numberOfPage;
+                document.getElementById("Runtime_edit").value = itemData.runTime;
+                document.getElementById("Genre_edit").value = itemData.genre;
+                console.log(itemData.publicationDate)
+            });
+        });
+    });
+
+
+</script>
+

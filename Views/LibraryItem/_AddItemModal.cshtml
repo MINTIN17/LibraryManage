@@ -1,0 +1,140 @@
+﻿
+<div class="modal fade" id="addItemModal" tabindex="-1" aria-labelledby="addItemModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addItemModalLabel">Thêm Sản Phẩm Mới</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addItemForm" asp-action="AddItem" asp-controller="LibraryItem" method="post">
+                    <div class="mb-3">
+                        <label for="ItemName" class="form-label">Tên</label>
+                        <input type="text" class="form-control" id="ItemName" name="ItemName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="author" class="form-label">Tác giả</label>
+                        <input type="text" class="form-control" id="Author" name="Author" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="releaseDate" class="form-label">Ngày phát hành</label>
+                        <input type="date" class="form-control" id="PublicationDate" name="PublicationDate" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="quantity" class="form-label">Số lượng</label>
+                        <input type="number" class="form-control" id="Quantity" name="Quantity" min="1" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Thể loại</label>
+                        <select id="Category" name="Category" class="form-select" required onchange="handleCategoryChange()">
+                            <option value="Book">Sách</option>
+                            <option value="DVD">DVD</option>
+                            <option value="Magazine">Tạp chí</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Mô tả</label>
+                        <textarea class="form-control" id="Description" name="Description" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Ảnh</label>
+                        <input type="text" class="form-control" id="Image" name="Image" readonly>
+                        <button type="button" class="btn btn-info mt-2" id="uploadImageButton">Chọn Ảnh</button>
+                    </div>
+                    <div class="mb-3">
+                        <label for="pageCount" class="form-label">Số trang</label>
+                        <input type="number" class="form-control" id="NumberOfPages" name="NumberOfPages" min="1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="runtime" class="form-label">Runtime (phút)</label>
+                        <input type="number" class="form-control" id="Runtime" name="Runtime" min="1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="genre" class="form-label">Thể loại (genre)</label>
+                        <input type="text" class="form-control" id="Genre" name="Genre">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                <button type="submit" class="btn btn-primary" onclick="form_submit()" >Lưu Sản Phẩm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    function form_submit() {
+        document.getElementById("addItemForm").submit();
+    }
+    function handleCategoryChange() {
+        var category = document.getElementById('Category').value;
+
+        var runtimeField = document.getElementById('Runtime');
+        var pageCountField = document.getElementById('NumberOfPages');
+        var genreField = document.getElementById('Genre');
+
+        runtimeField.disabled = false;
+        pageCountField.disabled = false;
+        genreField.disabled = false;
+
+        if (category === 'Book') {
+            runtimeField.disabled = true;
+        } else if (category === 'DVD') {
+            pageCountField.disabled = true;
+        } else if (category === 'Magazine') {
+            pageCountField.disabled = true;
+            genreField.disabled = true;
+            runtimeField.disabled = true;
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        handleCategoryChange();
+
+        // Sự kiện khi người dùng chọn ảnh
+        document.getElementById('Image').addEventListener('click', function () {
+
+            const inputFile = document.createElement('input');
+            inputFile.type = 'file';
+            inputFile.accept = 'image/*';
+            inputFile.click();
+
+            inputFile.addEventListener('change', function () {
+                const file = inputFile.files[0];
+
+                if (file) {
+                    const formData = new FormData();
+                    formData.append("file", file);
+
+                    fetch('/upload-image', {
+                        method: 'POST',
+                        body: formData
+                    })
+                        .then(response => {
+                            if (!response.ok) {
+                                return response.json().then(errorData => {
+                                    throw new Error(`Upload failed: ${errorData.message || response.status}`);
+                                });
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            if (data.url) {
+                                document.getElementById('Image').value = data.url;
+                            } else {
+                                alert('No URL returned from server');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error uploading image:', error);
+                            alert('Error uploading image!');
+                        });
+
+                }
+            });
+        });
+    });
+</script>

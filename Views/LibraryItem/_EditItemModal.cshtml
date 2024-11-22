@@ -1,0 +1,141 @@
+﻿
+<div class="modal fade" id="editItemModal" tabindex="-1" aria-labelledby="editItemModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editItemModalLabel">Thêm Sản Phẩm Mới</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editItemForm" asp-action="UpdateItemAsync" asp-controller="LibraryItem" method="post">
+                    <div class="mb-3">
+                        <label for="ItemId" class="form-label">Id</label>
+                        <input type="text" class="form-control" id="ItemId_edit" name="ItemId_edit" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="ItemName" class="form-label">Tên</label>
+                        <input type="text" class="form-control" id="ItemName_edit" name="ItemName_edit" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="author" class="form-label">Tác giả</label>
+                        <input type="text" class="form-control" id="Author_edit" name="Author_edit" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="releaseDate" class="form-label">Ngày phát hành</label>
+                        <input type="date" class="form-control" id="PublicationDate_edit" name="PublicationDate_edit" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="quantity" class="form-label">Số lượng</label>
+                        <input type="number" class="form-control" id="Quantity_edit" name="Quantity_edit" min="1" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Thể loại</label>
+                        <select id="Category_edit" name="Category_edit" class="form-select" required onchange="handleCategoryChangeEdit()">
+                            <option value="Book">Sách</option>
+                            <option value="DVD" >DVD</option>
+                            <option value="Magazine">Tạp chí</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Mô tả</label>
+                        <textarea class="form-control" id="Description_edit" name="Description_edit" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Ảnh</label>
+                        <input type="text" class="form-control" id="Image_edit" name="Image_edit" readonly>
+                        <button type="button" class="btn btn-info mt-2" id="uploadImageButton">Chọn Ảnh</button>
+                    </div>
+                    <div class="mb-3">
+                        <label for="pageCount" class="form-label">Số trang</label>
+                        <input type="number" class="form-control" id="NumberOfPages_edit" name="NumberOfPages_edit" min="1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="runtime" class="form-label">Runtime (phút)</label>
+                        <input type="number" class="form-control" id="Runtime_edit" name="Runtime_edit" min="1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="genre" class="form-label">Thể loại (genre)</label>
+                        <input type="text" class="form-control" id="Genre_edit" name="Genre_edit">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                <button type="submit" class="btn btn-primary" onclick="formEdit_submit()">Lưu Sản Phẩm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    function formEdit_submit() {
+        document.getElementById("editItemForm").submit();
+    }
+    function handleCategoryChangeEdit() {
+        var category = document.getElementById('Category_edit').value;
+
+        var runtimeField = document.getElementById('Runtime_edit');
+        var pageCountField = document.getElementById('NumberOfPages_edit');
+        var genreField = document.getElementById('Genre_edit');
+
+        runtimeField.disabled = false;
+        pageCountField.disabled = false;
+        genreField.disabled = false;
+
+        if (category === 'Book') {
+            runtimeField.disabled = true;
+            runtimeField.value = '';
+        } else if (category === 'DVD') {
+            pageCountField.disabled = true;
+            pageCountField.value = '';
+        } else if (category === 'Magazine') {
+            pageCountField.disabled = true;
+            genreField.disabled = true;
+            runtimeField.disabled = true;
+            pageCountField.value = '';
+            runtimeField.value = '';
+            genreField.value = '';
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        handleCategoryChange();
+
+        // Sự kiện khi người dùng chọn ảnh
+        document.getElementById('Image_edit').addEventListener('click', function () {
+            // Mở dialog chọn file
+            const inputFile = document.createElement('input');
+            inputFile.type = 'file';
+            inputFile.accept = 'image/*';
+            inputFile.click();
+
+            inputFile.addEventListener('change', function () {
+                const file = inputFile.files[0];
+
+                if (file) {
+                    const formData = new FormData();
+                    formData.append("file", file);
+
+                    fetch('upload-image', {
+                        method: 'POST',
+                        body: formData
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.url) {
+                                document.getElementById('Image').value = data.url;
+                            } else {
+                                alert('Upload ảnh thất bại!');
+                            }
+                        })
+                        .catch(error => {
+                            console.error(error);
+                            alert('Có lỗi xảy ra trong quá trình upload!');
+                        });
+                }
+            });
+        });
+    });
+</script>
